@@ -38,17 +38,18 @@
                                 <input type="password" class="form-control" placeholder="Enter your Password"
                                 [formControl]="myForm.controls['password']">
                             </div>
-
+                                <div class="alert alert-danger" *ngIf="myForm.controls['password'].invalid && myForm.controls['password'].touched">
+                                    Password should be of minimum 8 digits
+                                </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" placeholder="Confirm Password"
                                 [formControl]="myForm.controls['confirmPassword']">
                             </div>
-                            <div class="alert alert-danger" *ngIf="(myForm.controls['password'].invalid && 
-                            myForm.controls['confirmPassword'].invalid) 
-                            && (myForm.controls['password'].touched || myForm.controls['confirmPassword'].touched)">
-                                Password should be of minimum 8 digits
-                            </div>
-                            <button type="submit" class="btn btn-block btn-warning">Sign Up</button>
+                                <small class="text-muted form-text" *ngIf="myForm.controls['confirmPassword'].invalid && myForm.controls['confirmPassword'].touched">
+                                    Password does not match.
+                                </small>
+                                <!-- {{myForm.controls['confirmPassword'].errors | json}} -->
+                            <button type="submit" class="btn btn-block btn-warning" [disabled]="!myForm.valid" >Sign Up</button>
                         </form>
                     </div>
                 </div>
