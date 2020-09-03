@@ -11,6 +11,8 @@ import 'firebase/auth';
 export class SignupComponent implements OnInit {
 first_name: string;
 last_name: string;
+message: string ='';
+userError:any;
 
 myForm: FormGroup;
 
@@ -50,6 +52,7 @@ myForm: FormGroup;
     let password: string =signupform.value.password;
     let firstName: string =signupform.value.firstName;
     let lastName: string = signupform.value.lastName;
+    let confirmPassword: string= signupform.value.confirmPassword;
 
     firebase.auth().createUserWithEmailAndPassword(email, password).
     then((response) => {
@@ -58,13 +61,22 @@ myForm: FormGroup;
       response.user.updateProfile({
         displayName:firstName + " " + lastName,
         photoURL: "https://api.adorable.io/avatars/" + randomNumber
+      }).then(()=>{
+        this.message = "You have been signed up successfully. Please login!!";
       })
 
 
     }).catch((error) => {
-      console.log(error);
+      //console.log(error);
+      this.userError = error;
+
     })
 
+    // firstName=undefined;
+    // lastName=undefined;
+    // email=undefined;
+    // password=undefined;
+    // confirmPassword= undefined;
   }
   ngOnInit(): void {
   }
