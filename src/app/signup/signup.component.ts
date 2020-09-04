@@ -63,6 +63,11 @@ myForm: FormGroup;
         photoURL: "https://api.adorable.io/avatars/" + randomNumber
       }).then(()=>{
         this.message = "You have been signed up successfully. Please login!!";
+      firstName='';
+      lastName='';
+      email=undefined;
+      password=undefined;
+      confirmPassword= undefined;
       })
 
 
@@ -72,11 +77,7 @@ myForm: FormGroup;
 
     })
 
-    // firstName=undefined;
-    // lastName=undefined;
-    // email=undefined;
-    // password=undefined;
-    // confirmPassword= undefined;
+
   }
   ngOnInit(): void {
   }

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import { LoginComponent } from './login/login.component';
 let firebaseConfig = {
   apiKey: "AIzaSyAvfk6IBMYLlCf9MFdwpffcz4VDpBTxdog",
   authDomain: "scribe-4771.firebaseapp.com",
@@ -21,6 +22,7 @@ firebase.initializeApp(firebaseConfig);
   declarations: [
     AppComponent,
     SignupComponent,
+    LoginComponent,
 
   ],
   imports: [
