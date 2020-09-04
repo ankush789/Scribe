@@ -6,33 +6,34 @@
                     <h5>Sign Up form for login</h5>
                 </div>
                 <div class="card-text">
-                        <form>
+                        <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
                             <div class="form-group">
-                                <input type="email" class="form-control">
-                                <div class="alert alert-danger">
+                                <input type="email" class="form-control" [formControl]="form.controls['email']">
+                                <div class="alert alert-danger" *ngIf="!form.controls['email'].valid 
+                                && form.controls['email'].touched">
                                     Valid email is required!!
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control">
-                                <div class="alert alert-danger">
-                                    Password should be of minimun 8 characters.
+                                <input type="password" class="form-control" [formControl]="form.controls['password']">
+                                <div class="alert alert-danger" *ngIf="!form.controls['password'].valid && form.controls['password'].touched">
+                                    Password is required.
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button class="btn btn-danger">Sign In</button>
+                                <button class="btn btn-danger" [disabled]="!form.valid">Sign In</button>
                             </div>
                         </form>
                 </div>
             </div>
         </div>
 
-        <div class="alert alert-success">
-            You have been successfully logged in!!
+        <div class="alert alert-success" *ngIf="message.length>0">
+            {{message}}
         </div>
 
-        <div class="alert alert-danger">
-            <!-- {{error.message}} -->
+        <div class="alert alert-danger" *ngIf="userError">
+            {{userError.message}}
         </div>
 
     </div>
