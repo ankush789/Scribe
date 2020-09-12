@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="offset-md-2 col-md-8">
+            <h3 class="text-center mb-5">Simple Interest Calculator</h3>
+                    <form [formGroup]= "myform" (ngSubmit)="onSubmit(myform)">
+                        <div class="form-group">
+                            <label for="principal">Principal Amount</label>
+                            <input type="number" class="form-control" placeholder="Enter principal amount"
+                            [formControl]="myform.controls['principalAmount']">
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">Rate of Interest</label>
+                            <input type="number" class="form-control" placeholder="Enter rate of interest" 
+                            [formControl]="myform.controls['rateOfInterest']">
+                        </div>
+                        <div class="form-group">
+                            <label for="principal">Time (in months)</label>
+                            <input type="number" class="form-control" placeholder="Enter time"
+                             [formControl]="myform.controls['time']">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-warning btn-block mb-3">Calculate SI</button>
+
+                        <div class="form-group">
+                            <label for="Simple-Interest">Simple Interest</label>
+                            <input type="number" class="form-control"
+                            [formControl]="myform.controls['simpleInterest']" value={{simpleInterest}}>
+                        </div>
+                        
+                        <div class="amount">
+                             Amount {{ amount | currency:'INR'}} 
+                        </div>
+                    </form>
+        </div>
+    </div>
+</div>

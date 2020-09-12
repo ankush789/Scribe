@@ -7,9 +7,7 @@ import { SignupComponent } from './signup/signup.component';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import { LoginComponent } from './login/login.component';
-import { CapitalizePipe } from './capitalize.pipe';
-import { PipeComponent } from './pipe/pipe.component';
-import { SalutationPipe } from './salutation.pipe';
+import { SiComponent } from './si/si.component';
 let firebaseConfig = {
   apiKey: "AIzaSyAvfk6IBMYLlCf9MFdwpffcz4VDpBTxdog",
   authDomain: "scribe-4771.firebaseapp.com",
@@ -26,9 +24,8 @@ firebase.initializeApp(firebaseConfig);
     AppComponent,
     SignupComponent,
     LoginComponent,
-    CapitalizePipe,
-    PipeComponent,
-    SalutationPipe,
+    SiComponent,
+    
 
   ],
   imports: [
