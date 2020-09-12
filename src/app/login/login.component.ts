@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -13,7 +12,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   message: string="";
   userError:any;
-  constructor(public fb: FormBuilder) {
+  constructor(public fb: FormBuilder, public authService: AuthService) {
     this.form= this.fb.group({
       email: ['',[Validators.required, Validators.email]],
       password: ['',[Validators.required]]
@@ -25,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form){
-    firebase.auth().signInWithEmailAndPassword(form.value.email, form.value.password).then((data)=>{
+    this.authService.login(form.value.email, form.value.password).then((data)=>{
       console.log(data);
       this.message="You have been successfully logged in !!";
     }).catch((error)=>{
