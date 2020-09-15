@@ -8,6 +8,8 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import { LoginComponent } from './login/login.component';
 import { SiComponent } from './si/si.component';
+import { HomeComponent } from './home/home.component';
+import { MenuComponent } from './menu/menu.component';
 let firebaseConfig = {
   apiKey: "AIzaSyAvfk6IBMYLlCf9MFdwpffcz4VDpBTxdog",
   authDomain: "scribe-4771.firebaseapp.com",
@@ -25,6 +27,8 @@ firebase.initializeApp(firebaseConfig);
     SignupComponent,
     LoginComponent,
     SiComponent,
+    HomeComponent,
+    MenuComponent,
     
 
   ],
