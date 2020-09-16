@@ -10,6 +10,8 @@ import { LoginComponent } from './login/login.component';
 import { SiComponent } from './si/si.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
+import { MyblogsComponent } from './myblogs/myblogs.component';
+import { ProfileComponent } from './profile/profile.component';
 let firebaseConfig = {
   apiKey: "AIzaSyAvfk6IBMYLlCf9MFdwpffcz4VDpBTxdog",
   authDomain: "scribe-4771.firebaseapp.com",
@@ -29,6 +31,8 @@ firebase.initializeApp(firebaseConfig);
     SiComponent,
     HomeComponent,
     MenuComponent,
+    MyblogsComponent,
+    ProfileComponent,
     
 
   ],
