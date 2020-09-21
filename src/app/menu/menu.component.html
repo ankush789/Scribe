@@ -31,12 +31,12 @@
             <button class="btn btn-outline-light px-5" routerLink ="login">Login</button>
         </li>
 
-    <li class="nav-item right" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse">
-        <a href="" class="nav-link" routerLink="/" *ngIf="loggedIn">My Profile</a>
+    <li class="nav-item right" routerLinkActive="active" *ngIf="loggedIn" data-toggle="collapse" data-target=".navbar-collapse">
+        <a href="" class="nav-link" routerLink="/" >My Profile</a>
     </li>
 
-    <li class="nav-item" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse">
-        <a href="" class="nav-link" routerLink="/home" *ngIf="loggedIn" (click)="logout()">Log Out</a>
+    <li class="nav-item" routerLinkActive="active" *ngIf="loggedIn" data-toggle="collapse" data-target=".navbar-collapse">
+        <a href="" class="nav-link" routerLink="/" (click)="logout()">Log Out</a>
     </li>
     </ul>
 
