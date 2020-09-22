@@ -1,1 +1,18 @@
-<p>myblogs works!</p>
+<div class="row mt-5">
+    <div class="offset-sm-1 col-sm-2">
+        <div class="card">
+            <img [src]="user.photoURL" class="card-img-top">
+            <div class="card-body">
+                <h4 class="card-title">
+                    {{user.displayName}}
+                </h4>
+                <a class="btn btn-sm btn-primary" routerLink="/edit-profile/{{user.uid}}">
+                    Edit Profile
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-7">
+
+    </div>
+</div>
