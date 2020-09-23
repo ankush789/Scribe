@@ -12,6 +12,10 @@ import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { MyblogsComponent } from './myblogs/myblogs.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CreateComponent } from './create/create.component';
+import { NgxEditorModule } from 'ngx-editor';
+import { HttpClientModule } from '@angular/common/http';
+
 let firebaseConfig = {
   apiKey: "AIzaSyAvfk6IBMYLlCf9MFdwpffcz4VDpBTxdog",
   authDomain: "scribe-4771.firebaseapp.com",
@@ -33,16 +37,19 @@ firebase.initializeApp(firebaseConfig);
     MenuComponent,
     MyblogsComponent,
     ProfileComponent,
-    
-
+    CreateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxEditorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
