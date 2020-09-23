@@ -15,7 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { CreateComponent } from './create/create.component';
 import { NgxEditorModule } from 'ngx-editor';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
 let firebaseConfig = {
   apiKey: "AIzaSyAvfk6IBMYLlCf9MFdwpffcz4VDpBTxdog",
   authDomain: "scribe-4771.firebaseapp.com",
@@ -45,11 +45,12 @@ firebase.initializeApp(firebaseConfig);
     FormsModule,
     ReactiveFormsModule,
     NgxEditorModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularEditorModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 
 

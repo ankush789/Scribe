@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-create',
@@ -6,10 +9,70 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-
-  constructor() { }
+  editorConfig:any;
+  title: String;
+  content: String;
+  constructor() { 
+    this.editorConfig = {
+      editable: true,
+      spellcheck: true,
+      height: '150px',
+      minHeight: '0',
+      maxHeight: 'auto',
+      width: 'auto',
+      minWidth: '0',
+      translate: 'yes',
+      enableToolbar: true,
+      showToolbar: false,
+      placeholder: 'Enter text here...',
+      defaultParagraphSeparator: '',
+      defaultFontName: '',
+      defaultFontSize: '',
+      fonts: [
+        { class: 'arial', name: 'Arial' },
+        { class: 'times-new-roman', name: 'Times New Roman' },
+        { class: 'calibri', name: 'Calibri' },
+        { class: 'comic-sans-ms', name: 'Comic Sans MS' },
+      ],
+      customClasses: [
+        {
+          name: 'quote',
+          class: 'quote',
+        },
+        {
+          name: 'redText',
+          class: 'redText',
+        },
+        {
+          name: 'titleText',
+          class: 'titleText',
+          tag: 'h1',
+        },
+      ],
+      uploadUrl: 'v1/image',
+      uploadWithCredentials: false,
+      sanitize: true,
+      toolbarPosition: 'top',
+      toolbarHiddenButtons: [['bold', 'italic'], ['fontSize']],
+    };
+  }
 
   ngOnInit(): void {
   }
+  createPost(){
+      
+    firebase.firestore().collection("posts").add({
+      title: this.title,
+      content: this.content,
+      owner: firebase.auth().currentUser.uid,
+      created: firebase.firestore.FieldValue.serverTimestamp()
+    }).then((data)=>{
+      console.log(data);
+    }).catch((error)=>{
+      console.log(error);
+    })
 
+
+
+  }
 }
