@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -12,6 +12,8 @@ export class CreateComponent implements OnInit {
   editorConfig:any;
   title: String;
   content: String;
+
+  @Output('postCreated')postCreated = new EventEmitter();
   constructor() { 
     this.editorConfig = {
       editable: true,
@@ -60,7 +62,7 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
   }
   createPost(){
-      
+    // Store post content to firestore
     firebase.firestore().collection("posts").add({
       title: this.title,
       content: this.content,
@@ -68,6 +70,7 @@ export class CreateComponent implements OnInit {
       created: firebase.firestore.FieldValue.serverTimestamp()
     }).then((data)=>{
       console.log(data);
+      this.postCreated.emit();
     }).catch((error)=>{
       console.log(error);
     })

@@ -9,11 +9,24 @@ import 'firebase/auth';
 })
 export class MyblogsComponent implements OnInit {
   user:any = {};
+ 
   constructor() {
     this.user = firebase.auth().currentUser;
    }
   
   ngOnInit(): void {
+  }
+  getPosts(){
+    //get the lists of post
+   
+  }
+  onPostCreated(){
+    //refresh the list of posts
+ 
+  }
+  onDelete(){
+    //refresh the list of posts
+  
   }
 
 }
