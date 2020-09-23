@@ -9,13 +9,15 @@
     </div>
 
     <div class="card-footer text-muted">
-        Posted on {{ postData.created | date: 'MMM dd, yyyy '}}
-
+        <!-- //Firebase timestamps object need to be converted into regular JS dates to be able to use date pipe -->
+        Posted on {{ postData.created.toDate() | date: 'MMM dd, yyyy '}}
+        
+        <!-- Shows only to the creator of the post  -->
         <button type="button" class="btn btn-danger card-link 
-        btn-sm float-right" *ngIf="user && user.id == postData.owner"
+        btn-sm float-right" *ngIf="user && user.uid == postData.owner"
         (click)="delete()">Delete</button>
     </div>
-
+    <!-- displayed on if user belonging to the post is not logged in  -->
     <a routerLink="/profile/{{postData.owner}}" *ngIf="(user && postData.owner != user.uid) || !user" 
     class="card-footer text-muted">View Writer's Profile</a>
 </div>

@@ -34,7 +34,8 @@ export class MyblogsComponent implements OnInit {
   }
   onDelete(){
     //refresh the list of posts
-
+            this.posts = [];
+            this.getPosts();
   }
 
 }
