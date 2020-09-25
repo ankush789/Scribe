@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { PostComponent } from './post/post.component';
 import { ViewComponent } from './view/view.component';
+import { CommentComponent } from './comment/comment.component';
 let firebaseConfig = {
   apiKey: "AIzaSyAvfk6IBMYLlCf9MFdwpffcz4VDpBTxdog",
   authDomain: "scribe-4771.firebaseapp.com",
@@ -42,6 +43,7 @@ firebase.initializeApp(firebaseConfig);
     CreateComponent,
     PostComponent,
     ViewComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,
