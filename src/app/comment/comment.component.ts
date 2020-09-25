@@ -23,9 +23,10 @@ export class CommentComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-  //getting all the comments from cloud firestore
-
+  ngOnInit(): void {
+    this.getComments();
+  }
+  //Saving comments to firebase firestore
   postComment() {
     if (this.comment.length < 5) {
       return;
@@ -49,7 +50,16 @@ export class CommentComponent implements OnInit {
         console.log(error);
       });
   }
+  //getting all the comments from cloud firestore
+
   getComments() {
-    
+    this.comments = [];
+    firebase.firestore().collection("comments").
+    where("post","==", this.postId).orderBy("created","desc").get().then((data)=>{
+      console.log(data);
+      data.docs.forEach((commentRef)=>{
+        this.comments.push(commentRef.data())
+      })
+    })
   }
 }
