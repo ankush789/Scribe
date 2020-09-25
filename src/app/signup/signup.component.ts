@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl , Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
-
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-signup', 
@@ -56,8 +58,18 @@ myForm: FormGroup;
     //let confirmPassword: string= signupform.value.confirmPassword;
 
     this.authService.signup(email, password,firstName, lastName).
-    then(() => {
-          this.message = "You have been signed up successfully. Please login!!";
+    then((user:any) => {
+      firebase.firestore().collection("users").doc(user.uid).set({
+        firstName: signupform.value.firstName,
+        lastName: signupform.value.lastName,
+        email: signupform.value.email,
+        photoURL: user.photoURL,
+        interests: "",
+        bio: "",
+        hobbies: ""
+      }).then(()=>{
+          this.message = 'You have been signed up successfully. Please login!!';
+      })
       }).catch((error) => {
       console.log(error);
       this.userError = error;
