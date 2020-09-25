@@ -20,7 +20,7 @@ export class MyblogsComponent implements OnInit {
   }
   getPosts(){
     //get the lists of post
-     firebase.firestore().collection("posts").get().then((querySnapshot)=>{
+     firebase.firestore().collection("posts").orderBy('created','desc').get().then((querySnapshot)=>{
       console.log(querySnapshot.docs);
       this.posts = querySnapshot.docs;
     }).catch((err)=>{
