@@ -4,7 +4,9 @@
             <h2>{{postData.title}}</h2>
         </div>
         <div class="card-text">
-            {{ postData.content }}
+            <!-- Adding to limit the length of sentence visible on post component -->
+            {{ postData.content.substring(0,50) }} ...<a class=
+            "card-link" routerLink="/view/{{ post.id }}">Read More</a>
         </div>
     </div>
 
