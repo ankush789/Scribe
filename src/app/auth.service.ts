@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  constructor( public router: Router ) {  }
 
   login(email: string , password: string){
     return firebase.auth().signInWithEmailAndPassword(email, password);
@@ -30,6 +31,12 @@ export class AuthService {
           reject(error);
         })
     })
+    }
+//function for delaying redirecting to the login page by 3 seconds using promise
+    redirectToLogin(){
+      return new Promise( resolve => {
+        setTimeout(() => resolve(this.router.navigate(['/login'])) ,3000);
+      })
     }
   }
 

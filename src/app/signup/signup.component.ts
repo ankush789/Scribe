@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl , Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -18,7 +19,7 @@ userError:any;
 
 myForm: FormGroup;
 
-  constructor(public fb: FormBuilder, public authService : AuthService) {
+  constructor(public fb: FormBuilder, public authService : AuthService, public router: Router) {
     this.myForm = this.fb.group({
       firstName: ['',[Validators.required]],
       lastName: ['', [Validators.required]],
@@ -68,7 +69,10 @@ myForm: FormGroup;
         bio: "",
         hobbies: ""
       }).then(()=>{
-          this.message = 'You have been signed up successfully. Please login!!';
+          firebase.auth().signOut();
+          this.message = 'You have been signed up successfully. Redirecting to login . . .';
+          //Delaying redirect to login page by 3 seconds
+          this.authService.redirectToLogin();
       })
       }).catch((error) => {
       console.log(error);
