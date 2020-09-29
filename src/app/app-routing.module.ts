@@ -7,7 +7,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './auth.guard';
 import { ViewComponent } from './view/view.component';
-import { viewClassName } from '@angular/compiler';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
