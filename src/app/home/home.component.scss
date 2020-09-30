@@ -1,3 +1,11 @@
 .vertical-divider {
     border-right: 1px solid #ECEAEA;
 }
+.img-height{
+    height: 300px;
+}
+@media only screen and (max-width: 600px) {
+ .img-height{
+    height: 220px;
+}
+}

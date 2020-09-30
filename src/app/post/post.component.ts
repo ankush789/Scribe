@@ -23,7 +23,7 @@ export class PostComponent implements OnInit {
   user:any = {};
 
   constructor() { }
- // Receiving inputs must be initilaized in ngOnInit
+ // Received inputs must be initilaized in ngOnInit
   ngOnInit(): void {
     this.postData = this.post.data();
     this.user = firebase.auth().currentUser;
